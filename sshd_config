@@ -1,0 +1,7 @@
+
+
+Match Group skyhook
+	ForceCommand ssh SKYHOOK_TARGET
+
+
+
