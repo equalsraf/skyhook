@@ -4,6 +4,7 @@ SKYHOOK_BASE=/usr/libexec/skyhook/
 
 # check for $USER
 if [ -z $USER ]; then
+	logger -p auth.err skyhook was called with no USER environment
 	echo "Internal error (3)"
 	exit 3;
 fi
@@ -11,6 +12,7 @@ fi
 # check if the user is part of the *skyhook* group
 groups $1 | grep $GROUP > /dev/null
 if [ "$?" -ne "0" ]; then
+	logger -p auth.warning skyhook rejecting $USER, not part of $GROUP
 	echo "Your user is not allowed to puddle jump (4)"
 	exit 4
 fi
@@ -18,9 +20,11 @@ fi
 # check if hook is in place
 HOOK=$SKYHOOK_BASE/$USER
 if [ ! -e $HOOK  ]; then
+	logger -p auth.err skyhook rejecting $USER because hook is missing: $HOOK
 	echo "Could not find a hook for this user (5)"
 	exit 5
 fi
 
+logger -p auth.info skyhook user $USER is puddle jumping through $HOOK
 $HOOK
 
