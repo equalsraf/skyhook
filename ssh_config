@@ -2,6 +2,16 @@
 Host yourtargethost
 	User username
 	Hostname fqdn
-	# This is the important line
-	ProxyCommand ssh -q %h skyhook
+	# This is the important line it uses the
+	# settings above
+	ProxyCommand ssh -q %r@%h skyhook
+
+# A more detailed example - if your credentials
+# are different in the middlebox and the target
+
+Host machine
+	User username_final_destination
+	Hostname doesnotmatter
+	ProxyCommand ssh -q username_middlebox@hostname_middlebox skybook
+
 
