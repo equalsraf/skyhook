@@ -1,7 +1,7 @@
 
 
 Match Group skyhook
-	ForceCommand ssh SKYHOOK_TARGET
+	ForceCommand /usr/libexec/skyhook-shell
 
 
 

@@ -1,7 +1,7 @@
 
-Host SKYHOOK_TARGET
+Host yourtargethost
 	User username
-	Hostname 10.0.0.27
-# You might want to disable key check - depending on your network	
-#	StrickHostKeyChecking no
+	Hostname fqdn
+	# This is the important line
+	ProxyCommand ssh %h -q atnog skyhook
 
