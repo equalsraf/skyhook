@@ -3,5 +3,5 @@ Host yourtargethost
 	User username
 	Hostname fqdn
 	# This is the important line
-	ProxyCommand ssh %h -q atnog skyhook
+	ProxyCommand ssh -q %h skyhook
 

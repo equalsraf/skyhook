@@ -2,18 +2,6 @@
 GROUP=skyhook
 SKYHOOK_BASE=/usr/libexec/skyhook/
 
-# check SSH_ORIGINAL_COMMAND
-if [ -z $SSH_ORIGINAL_COMMAND ]; then
-	echo "skyhook invoked outside of SSH"
-	exit 1
-fi
-
-if [ "$SSH_ORIGINAL_COMMAND" -ne "skyhook" ]; then
-	echo "This is a skyhook account, you need to configure your SSH"
-	echo "client with the correct ProxyCommand"
-	exit 2
-fi
-
 # check for $USER
 if [ -z $USER ]; then
 	echo "Internal error (3)"
